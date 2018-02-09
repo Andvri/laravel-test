@@ -90,6 +90,9 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+            <div class="content">
+                @yield('content')
+            </div>
         </div>
     </body>
 </html>

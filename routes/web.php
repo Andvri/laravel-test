@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('storage/create', 'StorageController@save');
+Route::get('formulario', 'StorageController@index');
