@@ -24,4 +24,8 @@ class Employees extends Model
         'marital_statuses_id',
         'colony_id'
     ];
+
+    public function getLastInsert($firstID){
+        return $this->where('id', '>', $firstID);
+    }
 }

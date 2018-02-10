@@ -21,11 +21,15 @@ class ImportController extends Controller
     {   
         $url = public_path() . '/storage/data.xls';
         $args = array();
+        $employeesSuccess = [];
+        $employeesFail = [];
+        $firstEmploye = null;
         $callback = function($reader) use ($args) {
             $args = $reader->all();
             //dd($reader->all());
         };
-    	$args = Excel::load($url , $callback)->parsed;
+        $args = Excel::load($url , $callback)->parsed;
+        $index=0;
         foreach ($args as $emp) {
             //dd($emp);
             $company = Companies::firstOrCreate(['name' => $emp->empresa]);
@@ -35,8 +39,6 @@ class ImportController extends Controller
             $nationality_mode = NationalityModes::firstOrCreate(['mode' => $emp->modo_de_nacionalidad]);
             $marital_status = MaritalStatus::firstOrCreate(['name' => $emp->estado_civil]);
             $employe ='';
-            $employeesSuccess = [];
-            $employeesFail = [];
             try{
                 $employe = Employees::firstOrCreate([
                     'names' => $emp->nombres,
@@ -56,11 +58,23 @@ class ImportController extends Controller
                     'marital_statuses_id' => $marital_status->id,
                     'colony_id' => $colony->id,
                 ]);
+                if($firstEmploye === null)
+                    $firstEmploye = $employe->id;
             }catch(\Exception $e){
-                dd($e);
+                //dd($e->getMessage());
+                $emp['index'] =  $index;
+                //dd($emp);
+                array_push($employeesFail,$emp);
             }
+            $index++;
         }
-        return Employees::all();
+        $employeesSave = Employees::where('id', '>=', $firstEmploye )->get();
+        //dd($employeesSave);
+        foreach ($employeesSave as $value) {
+            ($value->maternal_surname);
+        }
+        //dd($employeesFail);
+        return View('results.app', [ 'employeesFail' => $employeesFail, 'employeesSave' => $employeesSave ]);
        
     }
 
