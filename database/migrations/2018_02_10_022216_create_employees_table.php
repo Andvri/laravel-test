@@ -22,7 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->string('paternal_surname',100);
         
             $table->date('birthdate');
-            $table->string('phone',13);
+            $table->string('phone',50);
 
             $table->string('gender');
             
