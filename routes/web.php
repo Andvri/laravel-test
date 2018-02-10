@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 Route::post('storage/create', 'StorageController@save');
 Route::get('formulario', 'StorageController@index');
+
+$router->get('import', 'ImportController@import');
