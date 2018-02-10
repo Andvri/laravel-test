@@ -16,8 +16,9 @@ class StorageController extends Controller
        $file = $request->file('file');
        
        $nombre = $file->getClientOriginalName();
-       
-       \Storage::disk('local')->put($nombre,  \File::get($file));
-       return "archivo guardado";
+       $nombre = explode('.',$nombre);
+        
+       \Storage::disk('local')->put('data.' . end($nombre),  \File::get($file));
+       return redirect('results');
     }
 }

@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::post('storage/create', 'StorageController@save');
-Route::get('formulario', 'StorageController@index');
+Route::get('/', 'StorageController@index');
 Route::get('make', 'EmployeesController@create');
 
-Route::get('import', 'ImportController@import');
+Route::get('results', 'ImportController@import');
