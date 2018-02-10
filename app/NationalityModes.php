@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class NationalityModes extends Model
 {
-    //
+    protected $fillable = ['mode'];
 }
