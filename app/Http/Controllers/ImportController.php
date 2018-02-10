@@ -23,7 +23,7 @@ class ImportController extends Controller
         $args = array();
         $callback = function($reader) use ($args) {
             $args = $reader->all();
-            dd($reader->all());
+            //dd($reader->all());
         };
     	$args = Excel::load($url , $callback)->parsed;
         foreach ($args as $emp) {
