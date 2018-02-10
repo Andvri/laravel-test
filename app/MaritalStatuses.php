@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MaritalStatus extends Model
+class MaritalStatuses extends Model
 {
     protected $fillable = ['name'];
 }

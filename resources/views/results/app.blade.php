@@ -48,9 +48,24 @@
             </tr>
             @foreach ($employeesSave as $item)
               <tr>
+                <td>{{$item->company->name}}</td>
                 <td>{{$item->names}}</td>
                 <td>{{$item->paternal_surname}}</td>
                 <td>{{$item->maternal_surname}}</td>
+                <td>{{$item->gender}}</td>
+                <td>{{$item->rfc}}</td>
+                <td>{{$item->ife_key}}</td>
+                <td>{{$item->elector_key}}</td>
+                <td>{{$item->phone}}</td>
+                <td>{{$item->curp}}</td>
+                <td>{{$item->marital_statuses->name}}</td>
+                <td>{{$item->imss}}</td>
+                <td>{{$item->contract_date}}</td>
+                <td>{{$item->nationality_mode->mode}}</td>
+                <td>{{$item->birthdate}}</td>
+                <td>{{$item->colony->name}}</td>
+                <td>{{$item->colony->municipality->name}}</td>
+                <td>{{$item->colony->municipality->state->name}}</td>
               </tr>
             @endforeach
           @endif  

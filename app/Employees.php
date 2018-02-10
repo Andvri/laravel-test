@@ -25,7 +25,16 @@ class Employees extends Model
         'colony_id'
     ];
 
-    public function getLastInsert($firstID){
-        return $this->where('id', '>', $firstID);
+    public function company(){
+        return $this->belongsTo(Companies::class);
+    }
+    public function colony(){
+        return $this->belongsTo(Colonies::class);
+    }
+    public function marital_statuses(){
+        return $this->belongsTo(MaritalStatuses::class);
+    }
+    public function nationality_mode(){
+        return $this->belongsTo(NationalityModes::class);
     }
 }

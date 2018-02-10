@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Colonies;
 use App\Companies;
 use App\Employees;
-use App\MaritalStatus;
+use App\MaritalStatuses;
 use App\Municipalities;
 use App\NationalityModes;
 use App\States;
@@ -37,7 +37,7 @@ class ImportController extends Controller
             $municipality = Municipalities::firstOrCreate(['name' => $emp->municipio_de_nacimiento, 'state_id' => $state->id]);
             $colony = Colonies::firstOrCreate(['name' => $emp->colonia_de_nacimiento, 'municipality_id' => $municipality->id]);
             $nationality_mode = NationalityModes::firstOrCreate(['mode' => $emp->modo_de_nacionalidad]);
-            $marital_status = MaritalStatus::firstOrCreate(['name' => $emp->estado_civil]);
+            $marital_status = MaritalStatuses::firstOrCreate(['name' => $emp->estado_civil]);
             $employe ='';
             try{
                 $employe = Employees::firstOrCreate([

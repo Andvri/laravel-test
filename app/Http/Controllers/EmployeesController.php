@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Colonies;
 use App\Companies;
 use App\Employees;
-use App\MaritalStatus;
+use App\MaritalStatuses;
 use App\Municipalities;
 use App\NationalityModes;
 use App\States;
