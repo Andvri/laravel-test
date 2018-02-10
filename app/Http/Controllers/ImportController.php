@@ -12,14 +12,9 @@ class ImportController extends Controller
         $url = public_path() . '/storage/FAKE.xls';
         $args = array();
         $callback = function($reader) use ($args) {
-            //header('Content-type: application/json');
             $args = $reader->all();
-            //dd($args);
-            
-            //echo json_encode($reader->get());
         };
     	$args = Excel::load($url , $callback)->parsed;
-        //dd($args);
         return response()->json($args);
     }
 
