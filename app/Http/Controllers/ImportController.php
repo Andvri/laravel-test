@@ -25,7 +25,6 @@ class ImportController extends Controller
             $args = $reader->all();
             dd($reader->all());
         };
-        (Excel::filter('chunk')->load($url)->chunk(20, $callback));
     	$args = Excel::load($url , $callback)->parsed;
         foreach ($args as $emp) {
             //dd($emp);
