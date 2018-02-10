@@ -16,5 +16,6 @@ Route::get('/', function () {
 });
 Route::post('storage/create', 'StorageController@save');
 Route::get('formulario', 'StorageController@index');
+Route::get('make', 'EmployeesController@create');
 
-$router->get('import', 'ImportController@import');
+Route::get('import', 'ImportController@import');

@@ -21,7 +21,7 @@ class Employees extends Model
         'contract_date',
         'company_id',
         'nationality_mode_id',
-        'marital_status_id',
+        'marital_statuses_id',
         'colony_id'
     ];
 }

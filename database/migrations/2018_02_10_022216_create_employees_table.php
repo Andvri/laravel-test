@@ -47,8 +47,8 @@ class CreateEmployeesTable extends Migration
             $table->integer('nationality_mode_id')->unsigned();
             $table->foreign('nationality_mode_id')->references('id')->on('nationality_modes');
 
-            $table->integer('marital_status_id')->unsigned();
-            $table->foreign('marital_status_id')->references('id')->on('marital_status');
+            $table->integer('marital_statuses_id')->unsigned();
+            $table->foreign('marital_statuses_id')->references('id')->on('marital_statuses');
 
             $table->integer('colony_id')->unsigned();
             $table->foreign('colony_id')->references('id')->on('colonies');
