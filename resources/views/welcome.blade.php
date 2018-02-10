@@ -33,6 +33,12 @@
                 border: 1px solid black;
                 border-collapse: collapse;
             }
+            .duplicate {
+                background-color: yellow;
+            }
+            .error{
+                background-color: red;
+            }
         </style>
     </head>
     <body>

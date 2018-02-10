@@ -35,10 +35,21 @@
               <tr>
                 @foreach($item as $key => $val)
                   @if($key !== 'index')
-                    <td>{{  $val }}</td>
+                    <td class="{{($val === null) ? 'error' : ''}}">{{  $val }}</td>
                   @endif
                 @endforeach
+                
               </tr>
+              <tr>
+                  <td colspan="18">
+
+                    <ul>
+                      @foreach(array_shift($employeesErrors) as $val)
+                      <li>{{  $val }}</li>
+                      @endforeach
+                    </ul>
+                  </td>
+                </tr>
             @endforeach
           @endif  
           
@@ -46,8 +57,9 @@
             <tr style="background: blue;">
               <td colspan="18">Guardados</td>
             </tr>
+            
             @foreach ($employeesSave as $item)
-              <tr>
+              <tr class="{{in_array($item->id,$duplicateEmployees) ? 'duplicate' : ''}}">
                 <td>{{$item->company->name}}</td>
                 <td>{{$item->names}}</td>
                 <td>{{$item->paternal_surname}}</td>
@@ -68,6 +80,7 @@
                 <td>{{$item->colony->municipality->state->name}}</td>
               </tr>
             @endforeach
+            
           @endif  
         </table> 
           
