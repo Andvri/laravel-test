@@ -24,6 +24,8 @@ class EmployeesController extends Controller
         $nationality_mode = NationalityModes::firstOrCreate(['mode' => 'NACIMIENTO']);
         $marital_status = MaritalStatus::firstOrCreate(['name' => 'VIUDO']);
         $employe ='';
+        $employeesSuccess = [];
+        $employeesFail = [];
         try{
             $employe = Employees::firstOrCreate([
                 'names' => 'JAVIER ANDRES',
@@ -49,6 +51,10 @@ class EmployeesController extends Controller
         
 
         return $employe;
+    }
+
+    public function all() {
+        return Employees::all();
     }
 
 }

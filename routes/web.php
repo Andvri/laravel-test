@@ -14,5 +14,5 @@
 Route::post('storage/create', 'StorageController@save');
 Route::get('/', 'StorageController@index');
 Route::get('make', 'EmployeesController@create');
-
+Route::get('empleados', 'EmployeesController@all');
 Route::get('results', 'ImportController@import');
