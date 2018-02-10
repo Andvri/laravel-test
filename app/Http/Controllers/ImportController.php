@@ -23,11 +23,10 @@ class ImportController extends Controller
         $args = array();
         $callback = function($reader) use ($args) {
             $args = $reader->all();
+            dd($reader->all());
         };
-
+        (Excel::filter('chunk')->load($url)->chunk(20, $callback));
     	$args = Excel::load($url , $callback)->parsed;
-        
-        
         foreach ($args as $emp) {
             //dd($emp);
             $company = Companies::firstOrCreate(['name' => $emp->empresa]);
@@ -39,7 +38,7 @@ class ImportController extends Controller
             $employe ='';
             $employeesSuccess = [];
             $employeesFail = [];
-            //try{
+            try{
                 $employe = Employees::firstOrCreate([
                     'names' => $emp->nombres,
                     'paternal_surname' => $emp->apellido_paterno,
@@ -58,9 +57,9 @@ class ImportController extends Controller
                     'marital_statuses_id' => $marital_status->id,
                     'colony_id' => $colony->id,
                 ]);
-           // }catch(\Exception $e){
-                //dd($e);
-           // }
+            }catch(\Exception $e){
+                dd($e);
+            }
         }
         return Employees::all();
        
