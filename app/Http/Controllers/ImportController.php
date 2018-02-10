@@ -110,7 +110,7 @@ class ImportController extends Controller
             }
             $index++;
         }
-        $employeesSave = Employees::where('id', '>=', $firstEmploye )->get();
+        $employeesSave = Employees::with(['company', 'colony', 'colony.municipality', 'colony.municipality.state', 'marital_statuses', 'nationality_mode'])->where('id', '>=', $firstEmploye )->get();
        
         
         return View('results.app', 
