@@ -90,7 +90,7 @@ class StorageController extends Controller
                         throw new \Exception("", 1);
                     }
 
-                    dd($emp);
+                    //dd($emp);
                     $employe =Employees::firstOrCreate(
                         [
                             'names' => $emp->nombres,
@@ -111,6 +111,7 @@ class StorageController extends Controller
                             'colony_id' => $colony->id
                         ]
                     );
+                    dd($employe);
                         $letEmploye = [];
                         $letEmploye['names'] = $emp->nombres;
                         $letEmploye['paternal_surname'] = $emp->apellido_paterno;
