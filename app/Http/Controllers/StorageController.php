@@ -63,7 +63,6 @@ class StorageController extends Controller
                 //dd($reader->all());
                 $args = $reader->get();
             });
-            dd($args);
             $index=0;
             $duplicateEmployees = [];
             foreach ($args as $emp) {
@@ -170,6 +169,7 @@ class StorageController extends Controller
             //                          ->where('id', '>=', $firstEmploye )
                 //                        ->get();
         
+            dd($args);
             
             return View('results.list', 
                 [ 
