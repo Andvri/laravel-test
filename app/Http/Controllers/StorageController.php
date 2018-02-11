@@ -169,7 +169,7 @@ class StorageController extends Controller
             //                          ->where('id', '>=', $firstEmploye )
                 //                        ->get();
         
-            dd($args);
+            //dd($args);
             
             return View('results.list', 
                 [ 
