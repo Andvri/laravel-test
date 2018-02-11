@@ -141,7 +141,7 @@ class StorageController extends Controller
                     //if($firstEmploye === null){
                     //  $firstEmploye = $employe->id;
                     //}
-                    dd($employeesSave);
+                    //dd($employeesSave);
                 }catch(\Exception $e){
                     //dd($e);
                     $string = $e->getMessage();
@@ -165,7 +165,7 @@ class StorageController extends Controller
                     array_push($employeesErrors,$rowErrors);
                     array_push($employeesFail,$emp);
                 }
-                $index++;
+                dd($employeesSave);
             }
             //$employeesSave = Employees::with(['company', 'colony', 'colony.municipality', 'colony.municipality.state', 'marital_statuses', 'nationality_mode'])
             //                          ->where('id', '>=', $firstEmploye )
