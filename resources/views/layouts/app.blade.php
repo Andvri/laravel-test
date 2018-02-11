@@ -45,7 +45,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    <form method="POST" action="storage/create" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form method="POST" action="{{url('results')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                         <upload></upload>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         

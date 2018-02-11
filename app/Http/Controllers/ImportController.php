@@ -131,10 +131,15 @@ class ImportController extends Controller
                     } 
                 }
                 //dd($e->getMessage());
+                if(empty($rowErrors)){
+                    array_push($rowErrors, 'El archivo contiene un formato invalido');
+                }
                 $emp['index'] =  $index;
                 $emp['errs'] = $rowErrors;
                 //dd($rowErrors);
                 //dd($emp);
+
+                
                 array_push($employeesErrors,$rowErrors);
                 array_push($employeesFail,$emp);
             }
