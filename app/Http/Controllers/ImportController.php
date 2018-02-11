@@ -123,10 +123,12 @@ class ImportController extends Controller
                 //}
             }catch(\Exception $e){
                 $string = $e->getMessage();
-                $unique = explode('\'',$string);
-                $unique = explode('_',$unique[3]);
-                if($unique[2] === 'unique'){
-                    array_push($rowErrors, 'El valor ' . $unique[1] . ' se encuentra ya registrado y debe se unico para todos');
+                if(strpos($string, 'unique') !== false){
+                    $unique = explode('\'',$string);
+                    $unique = explode('_',$unique[3]);
+                    if($unique[2] === 'unique'){
+                        array_push($rowErrors, 'El valor ' . $unique[1] . ' se encuentra ya registrado y debe se unico para todos');
+                    } 
                 }
                 //dd($e->getMessage());
                 $emp['index'] =  $index;
