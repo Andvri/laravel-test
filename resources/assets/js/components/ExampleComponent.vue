@@ -1,23 +1,28 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+            <h1 class="title">
+                {{message}}
+            </h1>
+            <h2 class="subtitle">
+                Primary subtitle
+            </h2>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
     export default {
         mounted() {
             console.log('Component mounted.')
+        },
+        props: ['message'],
+        data() {
+            return {
+                isActive: true
+            }
         }
     }
 </script>

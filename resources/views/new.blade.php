@@ -9,7 +9,7 @@
         <div class="panel-heading">Agregar archivos</div>
           <div class="panel-body">
             <form method="POST" action="storage/create" accept-charset="UTF-8" enctype="multipart/form-data">
-              
+              <upload></upload>
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               
               <div class="form-group">

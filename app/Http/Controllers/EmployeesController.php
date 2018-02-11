@@ -19,7 +19,8 @@ class EmployeesController extends Controller
   
 
     public function all() {
-        return Employees::all();
+        $data = Employees::with(['company', 'colony', 'colony.municipality', 'colony.municipality.state', 'marital_statuses', 'nationality_mode'])->where('id', '>=', 0 )->get();
+        return View('results.todo', [ "data" => $data]);
     }
 
 }

@@ -13,6 +13,7 @@ class StorageController extends Controller
     }
     public function save(Request $request)
     {   
+        //dd($request);
        $file = $request->file('file');
        
        $nombre = $file->getClientOriginalName();
