@@ -17,8 +17,34 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+            <h1 class="title">
+                <form method="POST" action="storage/create" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <upload></upload>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Subir Hoja de Calculo</label>
+                        <div class="col-md-6">
+                        <input type="file" class="form-control" name="file" >
+                        </div>
+                    </div>
+                    
+        
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </h1>
+            </div>
+        </div>
+    </section>
     <div id="app">
-            <example-component  message="Javier"></example-component>
         <main class="py-4">
             @yield('content')
         </main>
