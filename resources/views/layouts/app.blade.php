@@ -45,7 +45,6 @@
     </section>
     
     <div id="app">
-        <i  v-show="loading" class="fa fa-spinner fa-spin"></i>
         <main class="py-4">
             @yield('content')
         </main>
