@@ -48324,6 +48324,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48496,6 +48526,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data'],
@@ -48519,7 +48552,9 @@ var render = function() {
       data: _vm.data,
       "opened-detailed": _vm.defaultOpenedDetails,
       detailed: "",
-      "detail-key": "id"
+      "detail-key": "id",
+      narrowed: "",
+      bordered: ""
     },
     on: {
       "details-open": function(row, index) {
@@ -48579,7 +48614,7 @@ var render = function() {
               [
                 _vm._v(
                   "\n          " +
-                    _vm._s(props.row.apellido_marterno) +
+                    _vm._s(props.row.apellido_materno) +
                     "\n      "
                 )
               ]
@@ -49674,6 +49709,81 @@ var render = function() {
     "section",
     [
       _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("b-field", { attrs: { grouped: "", "group-multiline": "" } }, [
+            _c(
+              "div",
+              { staticClass: "control" },
+              [
+                _c(
+                  "b-taglist",
+                  { attrs: { attached: "" } },
+                  [
+                    _c("b-tag", { attrs: { type: "is-dark" } }, [
+                      _vm._v("Guardados")
+                    ]),
+                    _vm._v(" "),
+                    _c("b-tag", { attrs: { type: "is-info" } }, [
+                      _vm._v(_vm._s(_vm.save.length))
+                    ])
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "control" },
+              [
+                _c(
+                  "b-taglist",
+                  { attrs: { attached: "" } },
+                  [
+                    _c("b-tag", { attrs: { type: "is-dark" } }, [
+                      _vm._v("Duplicados")
+                    ]),
+                    _vm._v(" "),
+                    _c("b-tag", { attrs: { type: "is-warning" } }, [
+                      _vm._v(_vm._s(_vm.dupli.length))
+                    ])
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "control" },
+              [
+                _c(
+                  "b-taglist",
+                  { attrs: { attached: "" } },
+                  [
+                    _c("b-tag", { attrs: { type: "is-dark" } }, [
+                      _vm._v("Errores")
+                    ]),
+                    _vm._v(" "),
+                    _c("b-tag", { attrs: { type: "is-danger" } }, [
+                      _vm._v(_vm._s(_vm.err.length))
+                    ])
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "b-tabs",
         {
           model: {
@@ -49685,30 +49795,52 @@ var render = function() {
           }
         },
         [
-          _c(
-            "b-tab-item",
-            { attrs: { label: "Guardados", disabled: _vm.save.length === 0 } },
-            [_c("t-save", { attrs: { data: _vm.save } })],
-            1
-          ),
+          _vm.save.length > 0
+            ? [
+                _c(
+                  "b-tab-item",
+                  {
+                    attrs: {
+                      label: "Guardados",
+                      disabled: _vm.save.length === 0
+                    }
+                  },
+                  [_c("t-save", { attrs: { data: _vm.save } })],
+                  1
+                )
+              ]
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "b-tab-item",
-            {
-              attrs: { label: "Duplicados", disabled: _vm.dupli.length === 0 }
-            },
-            [_c("t-save", { attrs: { data: _vm.dupli } })],
-            1
-          ),
+          _vm.dupli.length > 0
+            ? [
+                _c(
+                  "b-tab-item",
+                  {
+                    attrs: {
+                      label: "Duplicados",
+                      disabled: _vm.dupli.length === 0
+                    }
+                  },
+                  [_c("t-save", { attrs: { data: _vm.dupli } })],
+                  1
+                )
+              ]
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "b-tab-item",
-            { attrs: { label: "Errores", disabled: _vm.err.length === 0 } },
-            [_c("t-error", { attrs: { data: _vm.err } })],
-            1
-          )
+          _vm.err.length > 0
+            ? [
+                _c(
+                  "b-tab-item",
+                  {
+                    attrs: { label: "Errores", disabled: _vm.err.length === 0 }
+                  },
+                  [_c("t-error", { attrs: { data: _vm.err } })],
+                  1
+                )
+              ]
+            : _vm._e()
         ],
-        1
+        2
       )
     ],
     1

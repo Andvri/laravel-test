@@ -17,34 +17,35 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-
-    <section class="hero is-primary">
+    <section class="hero is-dark">
         <div class="hero-body">
             <div class="container">
-            <h1 class="title">
-                <form method="POST" action="storage/create" accept-charset="UTF-8" enctype="multipart/form-data">
-                    <upload></upload>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Subir Hoja de Calculo</label>
-                        <div class="col-md-6">
-                        <input type="file" class="form-control" name="file" >
+                <h1 class="title">
+                    <form method="POST" action="storage/create" accept-charset="UTF-8" enctype="multipart/form-data">
+                        <upload></upload>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Subir Hoja de Calculo</label>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" name="file" >
+                            </div>
                         </div>
-                    </div>
-                    
-        
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        
+                        
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-success">Enviar</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </h1>
+                    </form>
+                </h1>
             </div>
         </div>
     </section>
+    
     <div id="app">
+        <i  v-show="loading" class="fa fa-spinner fa-spin"></i>
         <main class="py-4">
             @yield('content')
         </main>

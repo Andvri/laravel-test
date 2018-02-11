@@ -4,7 +4,10 @@
         :opened-detailed="defaultOpenedDetails"
         detailed
         detail-key="id"
-        @details-open="(row, index) => $toast.open(`Errores de: ${row.nombres}`)">
+        @details-open="(row, index) => $toast.open(`Errores de: ${row.nombres}`)"
+        narrowed
+        bordered
+        >
 
         <template slot-scope="props">
           <b-table-column field="company.name" label="Compañia" sortable>
@@ -19,7 +22,7 @@
           </b-table-column>
 
           <b-table-column field="maternal_surname" label="Apellido Materno" sortable>
-              {{ props.row.apellido_marterno }}
+              {{ props.row.apellido_materno }}
           </b-table-column>
 
           
