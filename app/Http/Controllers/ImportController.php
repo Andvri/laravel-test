@@ -123,6 +123,12 @@ class ImportController extends Controller
                   //  $firstEmploye = $employe->id;
                 //}
             }catch(\Exception $e){
+                $string = $e->getMessage();
+                $unique = explode('\'',$string);
+                $unique = explode('_',$unique[3]);
+                if($unique[2] === 'unique'){
+                    array_push($rowErrors, 'El valor ' . $unique[1] . ' se encuentra ya registrado y debe se unico para todos');
+                }
                 //dd($e->getMessage());
                 $emp['index'] =  $index;
                 $emp['errs'] = $rowErrors;
