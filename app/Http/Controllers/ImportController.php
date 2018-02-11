@@ -41,8 +41,8 @@ class ImportController extends Controller
         $employeesSuccess = [];
         $employeesFail = [];
         $employeesErrors = [];
-        
-        $firstEmploye = null;
+        $employeesSave = [];
+
         $callback = function($reader) use ($args) {
             $args = $reader->all();
             //dd($reader->all());
@@ -93,16 +93,39 @@ class ImportController extends Controller
                         'colony_id' => $colony->id
                     ]
                 );
+                    $letEmploye = [];
+                    $letEmploye['names'] = $emp->nombres;
+                    $letEmploye['paternal_surname'] = $emp->apellido_paterno;
+                    $letEmploye['maternal_surname'] = $emp->apellido_materno;
+                    $letEmploye['birthdate'] = $emp->fecha_de_nacimiento;
+                    $letEmploye['phone'] = $emp->telefono;
+                    $letEmploye['gender'] = $emp->sexo;
+                    $letEmploye['rfc'] = $emp->rfc;
+                    $letEmploye['curp'] = $emp->curp;
+                    $letEmploye['ife_key'] = $emp->clave_del_ife;
+                    $letEmploye['elector_key'] = $emp->clave_del_elector;
+                    $letEmploye['imss'] = $emp->afiliacion_a_imss;
+                    $letEmploye['contract_date'] = $emp->fecha_de_contrato;
+                    $letEmploye['company'] = $emp->empresa;
+                    $letEmploye['nationality_mode'] = $emp->modo_de_nacionalidad;
+                    $letEmploye['marital_statuses'] = $emp->estado_civil;
+                    $letEmploye['colony'] =  $emp->colonia_de_nacimiento;
+                    $letEmploye['municipality'] =  $emp->municipio_de_nacimiento;
+                    $letEmploye['state'] =  $emp->entidad_de_nacimiento;
+                    $letEmploye['id'] =   $employe->id;
+                    
                 if(!($employe->wasRecentlyCreated)){
-                    array_push($duplicateEmployees,$employe->id);    
-                }
-                if($firstEmploye === null){
-                    $firstEmploye = $employe->id;
-                }
+                    array_push($duplicateEmployees,$letEmploye);    
+                }else{
+                    array_push($employeesSave,$letEmploye);
+                }   
+                //if($firstEmploye === null){
+                  //  $firstEmploye = $employe->id;
+                //}
             }catch(\Exception $e){
                 //dd($e->getMessage());
                 $emp['index'] =  $index;
-                
+                $emp['errs'] = $rowErrors;
                 //dd($rowErrors);
                 //dd($emp);
                 array_push($employeesErrors,$rowErrors);
@@ -110,10 +133,12 @@ class ImportController extends Controller
             }
             $index++;
         }
-        $employeesSave = Employees::with(['company', 'colony', 'colony.municipality', 'colony.municipality.state', 'marital_statuses', 'nationality_mode'])->where('id', '>=', $firstEmploye )->get();
+        //$employeesSave = Employees::with(['company', 'colony', 'colony.municipality', 'colony.municipality.state', 'marital_statuses', 'nationality_mode'])
+          //                          ->where('id', '>=', $firstEmploye )
+            //                        ->get();
        
         
-        return View('results.app', 
+        return View('results.list', 
             [ 
                 'employeesFail' => $employeesFail,
                 'employeesErrors' => $employeesErrors, 

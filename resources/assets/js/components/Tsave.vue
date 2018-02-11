@@ -31,7 +31,7 @@
                 </b-table-column>
 
                 <b-table-column field="company.name" label="Compañia" sortable>
-                    {{ props.row.company.name }}
+                    {{ props.row.company }}
                 </b-table-column>
                 <b-table-column field="names" label="Nombres" sortable>
                     {{ props.row.names }}
@@ -75,7 +75,7 @@
                 </b-table-column>
 
                 <b-table-column field="marital_statuses" label="Estado Civil" sortable>
-                    {{ props.row.marital_statuses.name }}
+                    {{ props.row.marital_statuses }}
                 </b-table-column>
 
                 <b-table-column field="imss" label="IMSS" sortable>
@@ -89,7 +89,7 @@
                 </b-table-column>
 
                 <b-table-column field="nationality_mode" label="Modo de Nacionalidad" sortable>
-                    {{ props.row.nationality_mode.mode }}
+                    {{ props.row.nationality_mode }}
                 </b-table-column>
 
                 
@@ -100,15 +100,15 @@
                 </b-table-column>
 
                 <b-table-column field="colony.municipality.state" label="Estado de Nacimiento" sortable>
-                    {{ props.row.colony.municipality.state.name }}
+                    {{ props.row.state }}
                 </b-table-column>
 
                 <b-table-column field="colony.municipality" label="Municipio de Nacimiento" sortable>
-                    {{ props.row.colony.municipality.name }}
+                    {{ props.row.municipality}}
                 </b-table-column>
 
                 <b-table-column field="colony" label="Colonia de Nacimiento" sortable>
-                    {{ props.row.colony.name }}
+                    {{ props.row.colony }}
                 </b-table-column>
 
             </template>
@@ -117,21 +117,20 @@
 </template>
 
 <script>
-    export default {
-        props: ['data'],
-        data() {
-            return {
-           
-                isPaginated: true,
-                isPaginationSimple: false,
-                defaultSortDirection: 'asc',
-                currentPage: 1,
-                perPage: 5
-            }
-        },
-        mounted() {
-            console.log(this.props);
-            console.log('Hola.')
-        }
+export default {
+  props: ['data'],
+  data() {
+    return {
+      isPaginated: true,
+      isPaginationSimple: false,
+      defaultSortDirection: 'asc',
+      currentPage: 1,
+      perPage: 5
     }
+  }
+}
 </script>
+
+<style>
+
+</style>

@@ -19,6 +19,7 @@ Vue.use(Buefy);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('upload', require('./components/Upload.vue'));
 Vue.component('ttable', require('./components/Ttable.vue'));
+Vue.component('results', require('./components/Results.vue'));
 const app = new Vue({
     el: '#app'
 });

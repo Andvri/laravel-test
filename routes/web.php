@@ -16,3 +16,12 @@ Route::get('/', 'StorageController@index');
 Route::get('make', 'EmployeesController@create');
 Route::get('empleados', 'EmployeesController@all');
 Route::get('results', 'ImportController@import');
+
+Route::get('test', function() {
+  $arr = [];
+
+  $arr['Hola'] ='sda';
+  $arr['Pedro'] = 'dito';
+  dd($arr);
+  return View('results.list');
+});
