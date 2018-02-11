@@ -111,7 +111,7 @@ class StorageController extends Controller
                             'colony_id' => $colony->id
                         ]
                     );
-                    dd($employe);
+                    //dd($employe);
                         $letEmploye = [];
                         $letEmploye['names'] = $emp->nombres;
                         $letEmploye['paternal_surname'] = $emp->apellido_paterno;
@@ -141,6 +141,7 @@ class StorageController extends Controller
                     //if($firstEmploye === null){
                     //  $firstEmploye = $employe->id;
                     //}
+                    dd($employeesSave);
                 }catch(\Exception $e){
                     //dd($e);
                     $string = $e->getMessage();
