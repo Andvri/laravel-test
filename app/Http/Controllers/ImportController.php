@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+ini_set('max_execution_time', 180);
 
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -43,11 +43,10 @@ class ImportController extends Controller
         $employeesErrors = [];
         $employeesSave = [];
 
-        $callback = function($reader) use ($args) {
+        $args = Excel::load($url , function($reader) use ($args) {
             $args = $reader->all();
             //dd($reader->all());
-        };
-        $args = Excel::load($url , $callback)->parsed;
+        })->parsed;
         $index=0;
         $duplicateEmployees = [];
         foreach ($args as $emp) {
