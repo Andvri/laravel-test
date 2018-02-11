@@ -18,6 +18,30 @@
 </head>
 <body>
     <section class="hero is-dark">
+            <div class="hero-head">
+                    <nav class="navbar">
+                      <div class="container">
+                        <div id="navbarMenuHeroA" class="navbar-menu">
+                          <div class="navbar-end">
+                            <a class="navbar-item" href="/">
+                                Home
+                            </a>
+                            <a class="navbar-item" href="/empleados">
+                              Todos los Empleados
+                            </a>
+                            <span class="navbar-item">
+                              <a class="button is-primary is-inverted" href="https://github.com/Andvri/laravel-test" target="_blank">
+                                <span class="icon">
+                                  <i class="fab fa-github"></i>
+                                </span>
+                                <span>Repositorio</span>
+                              </a>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">

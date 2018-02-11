@@ -1,10 +1,6 @@
 <template>
     <section>
         <b-field grouped group-multiline>
-            <b-select v-model="defaultSortDirection">
-                <option value="asc">Default sort direction: ASC</option>
-                <option value="desc">Default sort direction: DESC</option>
-            </b-select>
             <b-select v-model="perPage" :disabled="!isPaginated">
                 <option value="5">5 por pagina</option>
                 <option value="10">10 por pagina</option>
