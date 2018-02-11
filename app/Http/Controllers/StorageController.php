@@ -99,7 +99,7 @@ class StorageController extends Controller
                             'birthdate' => $emp->fecha_de_nacimiento,
                             'phone' => $emp->telefono,
                             'gender' => $emp->sexo,
-                            'rfc' => ltrim($emp->rfc),
+                            'rfc' => $emp->rfc,
                             'curp' => $emp->curp,
                             'ife_key' => $emp->clave_del_ife,
                             'elector_key' => $emp->clave_de_elector,
