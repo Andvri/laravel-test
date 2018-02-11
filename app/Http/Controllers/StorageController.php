@@ -80,7 +80,7 @@ class StorageController extends Controller
 
                 try{
                     $rowErrors = $this->getErrors($emp);
-                    dd($emp);
+                    //dd($emp);
                     if(
                         (($emp->clave_del_ife === null)  && ($emp->clave_de_elector !== null))
                         ||
@@ -90,7 +90,7 @@ class StorageController extends Controller
                         throw new \Exception("", 1);
                     }
 
-         //           dd($emp->fecha_de_contrato);
+                    dd($emp);
                     $employe =Employees::firstOrCreate(
                         [
                             'names' => $emp->nombres,
