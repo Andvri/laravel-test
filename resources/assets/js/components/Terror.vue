@@ -38,8 +38,8 @@
               {{ props.row.clave_del_ife }}
           </b-table-column>
 
-          <b-table-column field="elector_key" label="Clave del Elector" width="40" sortable numeric>
-              {{ props.row.clave_del_elector }}
+          <b-table-column field="elector_key" label="Clave de Elector" width="40" sortable numeric>
+              {{ props.row.clave_de_elector }}
           </b-table-column>
 
           <b-table-column field="phone" label="Telefono" sortable>

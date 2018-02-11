@@ -49319,7 +49319,7 @@ var render = function() {
               {
                 attrs: {
                   field: "elector_key",
-                  label: "Clave del Elector",
+                  label: "Clave de Elector",
                   width: "40",
                   sortable: "",
                   numeric: ""
@@ -49328,7 +49328,7 @@ var render = function() {
               [
                 _vm._v(
                   "\n          " +
-                    _vm._s(props.row.clave_del_elector) +
+                    _vm._s(props.row.clave_de_elector) +
                     "\n      "
                 )
               ]

@@ -26,9 +26,9 @@ class CreateEmployeesTable extends Migration
 
             $table->string('gender');
             
-            $table->string('rfc',13)->unique();
+            $table->string('rfc',15)->unique();
             
-            $table->string('curp',13)->nullable()->unique();
+            $table->string('curp',20)->nullable()->unique();
 
             $table->string('ife_key',20)->nullable()->unique();
             $table->string('elector_key',20)->nullable()->unique();

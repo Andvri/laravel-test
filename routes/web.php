@@ -17,5 +17,8 @@ Route::get('empleados', 'EmployeesController@all');
 Route::post('results', 'StorageController@save');
 
 Route::get('error', function() {
+  $strin = '                      Hola me llamo gladys';
+  dd(($strin));
+
   return View('welcome');
 });

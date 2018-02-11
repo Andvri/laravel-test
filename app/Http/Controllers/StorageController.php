@@ -56,10 +56,14 @@ class StorageController extends Controller
             $employeesErrors = [];
             $employeesSave = [];
 
-            $args = Excel::load($url , function($reader) use ($args) {
-                $args = $reader->all();
+            Excel::load($url , function($reader) use (&$args) {
+                $reader->ignoreEmpty();
+                $reader->limitColumns(27);
+               // dd($reader->get());
                 //dd($reader->all());
-            })->parsed;
+                $args = $reader->get();
+            });
+            //dd($args);
             $index=0;
             $duplicateEmployees = [];
             foreach ($args as $emp) {
@@ -77,14 +81,17 @@ class StorageController extends Controller
 
                 try{
                     $rowErrors = $this->getErrors($emp);
+                    //dd($emp);
                     if(
-                        (($emp->clave_del_ife === null)  && ($emp->clave_del_elector !== null))
+                        (($emp->clave_del_ife === null)  && ($emp->clave_de_elector !== null))
                         ||
-                        (($emp->clave_del_ife !== null)  && ($emp->clave_del_elector === null))
+                        (($emp->clave_del_ife !== null)  && ($emp->clave_de_elector === null))
                     ){
                         array_push($rowErrors,'No esta permitido que solo uno de los campos Clave del IFE y Clave del Elector reciban un valor');
                         throw new \Exception("", 1);
                     }
+
+         //           dd($emp->fecha_de_contrato);
                     $employe =Employees::firstOrCreate(
                         [
                             'names' => $emp->nombres,
@@ -93,10 +100,10 @@ class StorageController extends Controller
                             'birthdate' => $emp->fecha_de_nacimiento,
                             'phone' => $emp->telefono,
                             'gender' => $emp->sexo,
-                            'rfc' => $emp->rfc,
+                            'rfc' => ltrim($emp->rfc),
                             'curp' => $emp->curp,
                             'ife_key' => $emp->clave_del_ife,
-                            'elector_key' => $emp->clave_del_elector,
+                            'elector_key' => $emp->clave_de_elector,
                             'imss' => $emp->afiliacion_a_imss,
                             'contract_date' => $emp->fecha_de_contrato,
                             'company_id' => $company->id,
@@ -115,7 +122,7 @@ class StorageController extends Controller
                         $letEmploye['rfc'] = $emp->rfc;
                         $letEmploye['curp'] = $emp->curp;
                         $letEmploye['ife_key'] = $emp->clave_del_ife;
-                        $letEmploye['elector_key'] = $emp->clave_del_elector;
+                        $letEmploye['elector_key'] = $emp->clave_de_elector;
                         $letEmploye['imss'] = $emp->afiliacion_a_imss;
                         $letEmploye['contract_date'] = $emp->fecha_de_contrato;
                         $letEmploye['company'] = $emp->empresa;
@@ -135,7 +142,7 @@ class StorageController extends Controller
                     //  $firstEmploye = $employe->id;
                     //}
                 }catch(\Exception $e){
-               
+                    //dd($e);
                     $string = $e->getMessage();
                     if(strpos($string, 'unique') !== false){
                         $unique = explode('\'',$string);
