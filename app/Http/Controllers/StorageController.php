@@ -165,14 +165,14 @@ class StorageController extends Controller
                     array_push($employeesErrors,$rowErrors);
                     array_push($employeesFail,$emp);
                 }
-                dd($employeesSave);
+                //dd($employeesSave);
             }
             //$employeesSave = Employees::with(['company', 'colony', 'colony.municipality', 'colony.municipality.state', 'marital_statuses', 'nationality_mode'])
             //                          ->where('id', '>=', $firstEmploye )
                 //                        ->get();
         
             //dd($args);
-            
+            dd($employeesSave);
             return View('results.list', 
                 [ 
                     'employeesFail' => $employeesFail,
